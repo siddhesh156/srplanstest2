@@ -1,7 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import logo, { ReactComponent } from './logo.svg';
 import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import NavBar from './components/layouts/NavBar'
+import Dashboard from './components/dashboard/Dashboard'
+import ProjectDetails from './components/projects/ProjectDetails'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import CreateProject from './components/projects/CreateProject'
 
+
+class App extends Component{
+  render () {
+    return (
+      <BrowserRouter>
+        <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path='/' component={Dashboard} />
+          <Route path='/project/:id' component={ProjectDetails} />
+          <Route path='/signin' component={SignIn} />
+          <Route path='/signup' component={SignUp} />
+          <Route path='/create' component={CreateProject} />
+        </Switch>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+/*
 function App() {
   return (
     <div className="App">
@@ -16,11 +43,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React Hello World
         </a>
       </header>
     </div>
   );
-}
+}*/
 
 export default App;
